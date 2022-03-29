@@ -1,0 +1,9 @@
+version: '3'
+services:
+  happy-family:
+    container_name: happy-family-container
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
