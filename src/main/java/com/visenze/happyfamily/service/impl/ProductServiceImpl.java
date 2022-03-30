@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
 
 			Optional<ProductEntity> optionalProductEntity = productRepository.findById(productWanted.getProductId());
 
-			if (optionalProductEntity.isEmpty())
+			if (!optionalProductEntity.isPresent())
 				throw new NoProductFoundException("No product found with id:" + productWanted.getProductId());
 
 			ProductEntity productEntity = optionalProductEntity.get();
@@ -82,7 +82,7 @@ public class ProductServiceImpl implements ProductService {
 
 		Optional<ProductEntity> optionalProductEntity = productRepository.findById(id);
 
-		if (optionalProductEntity.isEmpty())
+		if (!optionalProductEntity.isPresent())
 			throw new NoProductFoundException("No product found with id:" + id);
 
 		return optionalProductEntity.get().getProductStock();
